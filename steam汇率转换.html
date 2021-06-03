@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        input {
+            display: block;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<span>steam市场价:</span>
+<input type="number" placeholder="steam市场价" id="income" value="0" onkeydown="entersearch()">
+<span>buff价格</span>
+<input type="number" placeholder="buff价格" id="outcome" value="0" onkeydown="entersearch()">
+<span>价格差价</span>
+<input type="number" placeholder="价格差价" id="difference">
+<span>性价比</span>
+<input type="number" placeholder="性价比" id="costRate">
+<span>利润</span>
+<input type="number" placeholder="利润" id="profits">
+
+<span>胶囊买入价格</span>
+<input type="number" placeholder="胶囊买入价格" id="buy" value="2">
+<span>胶囊卖出价格</span>
+<input type="number" placeholder="胶囊卖出价格" id="sell" value="4">
+
+
+<script>
+
+    function entersearch() {
+        var event = window.event || arguments.callee.caller.arguments[0];
+        if (event.keyCode == 13) {
+            transform();
+        }
+    }
+
+
+    function transform() {
+        var incomeBox = document.getElementById("income");
+        var outcomeBox = document.getElementById("outcome");
+        var differenceBox = document.getElementById("difference");
+        var profitsBox = document.getElementById("profits");
+        var costRateBox = document.getElementById("costRate");
+
+        var income = incomeBox.value;
+        var outcome = outcomeBox.value;
+        var difference = differenceBox.value;
+        var profits = profitsBox.value;
+        var buy = document.getElementById("buy").value;
+        var sell = document.getElementById("sell").value;
+
+        var dif = (income - income * 0.15) - outcome;
+
+        var rate = dif / outcome;
+
+        differenceBox.value = dif;
+        costRateBox.value = rate;
+
+        var fits = (parseFloat(difference) + parseFloat(outcome)) / buy * sell * 0.975 - parseFloat(outcome);
+        console.log("fits", fits);
+        profitsBox.value = fits;
+    }
+
+
+</script>
+
+
+</body>
+</html>
