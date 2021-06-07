@@ -6,15 +6,7 @@
 
 import axios from 'axios';
 
-const errorCaptured = async (asyncFunc, ...params) =>{
-    try{
-        console.log('params',params);
-        let res = await asyncFunc(...params);
-        return [null,res];
-    }catch (e) {
-        return [e, null];
-    }
-};
+import {errorCaptured} from './youjun_tools'
 
 
 const baseURL = "http://192.168.3.62:3001";
